@@ -19,5 +19,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests -pl common-kafka -am
       - name: Run Flaky Test
+        run: mvn -pl common-kafka test -Dtest=com.cerner.common.kafka.consumer.ProcessingKafkaConsumerTest#nextRecord_fairProcessing
+      - name: Run Flaky Test using NonDex
         run: mvn -pl common-kafka edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.cerner.common.kafka.consumer.ProcessingKafkaConsumerTest#nextRecord_fairProcessing
 
